@@ -34,4 +34,9 @@ public class TaskController {
         taskService.deleteTask(id);
     }
 
+    @PutMapping(path = "/{id}")
+    public Task setReminder(@PathVariable(name = "id") Long id){
+        return taskService.setReminder(id);
+    }
+
 }
