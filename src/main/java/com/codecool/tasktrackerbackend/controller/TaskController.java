@@ -28,5 +28,10 @@ public class TaskController {
     public Task addTask(@RequestBody Task task){
         return taskService.addTask(task);
     }
+    
+    @DeleteMapping(path = "/{id}")
+    public void deleteTask(@PathVariable(name = "id") Long id){
+        taskService.deleteTask(id);
+    }
 
 }
