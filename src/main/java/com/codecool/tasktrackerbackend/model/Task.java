@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +23,7 @@ public class Task {
     private String text;
 
     @NonNull
-    private LocalDate day;
+    private LocalDateTime day;
 
     private boolean reminder;
 
