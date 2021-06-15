@@ -16,7 +16,7 @@ public class Task {
 
     @Id
     @GeneratedValue
-    private int id;
+    private Long id;
 
     @NonNull
     private String text;
