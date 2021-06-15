@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.NoSuchElementException;
+import java.util.Optional;
 
 @Service
 public class TaskService {
@@ -31,6 +32,18 @@ public class TaskService {
         try{
             taskRepository.deleteById(id);
         } catch (EmptyResultDataAccessException exception){
+            throw new NoSuchElementException(String.format("No task found with id: %d", id));
+        }
+    }
+
+    public Task setReminder(Long id) {
+        Optional<Task> taskOptional = taskRepository.findById(id);
+        if(taskOptional.isPresent()){
+            Task task = taskOptional.get();
+            task.setReminder(!task.isReminder());
+            taskRepository.save(task);
+            return task;
+        } else {
             throw new NoSuchElementException(String.format("No task found with id: %d", id));
         }
     }
